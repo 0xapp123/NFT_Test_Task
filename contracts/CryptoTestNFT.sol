@@ -8,9 +8,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract CryptoTestNFT is ERC721Enumerable, Ownable {
 
     // @notice NFT Mint Price is hardcoded as 0.02 ETH
-    uint256 MINT_PRICE = 0.02 ether;
+    uint256 public MINT_PRICE = 0.02 ether;
     // @notice Total_Supply as 10 
-    uint256 TOTAL_SUPPLY = 10;
+    uint256 public TOTAL_SUPPLY = 10;
 
     // @notice baseTokenURI to store the Metadata IPFS URI
     string _baseTokenURI;
@@ -28,7 +28,7 @@ contract CryptoTestNFT is ERC721Enumerable, Ownable {
         uint256 totalMinted = totalSupply();
 
         // Check if total mint amount is exceed the TotalSupply.
-        require(totalMinted + 1 <= TOTAL_SUPPLY, "Amount Exceed!");
+        require(totalMinted + 1 <= TOTAL_SUPPLY, "Mint Amount Exceed!");
 
         // Check if mint price is sufficient.
         require(msg.value >= MINT_PRICE, "Insufficient Price");

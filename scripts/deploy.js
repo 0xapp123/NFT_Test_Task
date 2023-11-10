@@ -3,9 +3,9 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const token = await ethers.deployContract("CryptoTestNFT");
+  const token = await ethers.deployContract("CryptoTestNFT", [process.env.NFT_METADATA]);
 
-  console.log("Token address:", await token.getAddress());
+  console.log("Token address:", token.address);
 }
 
 main()
