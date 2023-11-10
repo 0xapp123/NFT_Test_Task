@@ -1,6 +1,7 @@
 /** @type import('hardhat/config').HardhatUserConfig */
 require('dotenv').config();
 require('@nomiclabs/hardhat-etherscan');
+require('@nomiclabs/hardhat-ethers');
 
 const { MUMBAI_PRIVATE_KEY, MUMBAI_RPC_URL, MUMBAI_API_KEY } = process.env;
 module.exports = {
