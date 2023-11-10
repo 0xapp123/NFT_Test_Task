@@ -3,11 +3,19 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygon, polygonMumbai } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+
+import { MUMBAI_RPC } from "../config/config";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [polygon, polygonMumbai],
-  [publicProvider()]
+  [polygonMumbai, polygon],
+  [
+    jsonRpcProvider({
+      rpc: () => ({
+        http: MUMBAI_RPC,
+      }),
+    }),
+  ]
 );
 
 const { connectors } = getDefaultWallets({
